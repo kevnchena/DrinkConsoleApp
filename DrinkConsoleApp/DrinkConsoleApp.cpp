@@ -19,14 +19,16 @@ void AddNewDrinks(vector<Drinkitem>& drinks)
 }
 
 void DisplayDrinkMenu(vector<Drinkitem>& drinks) {
-	cout << setw(4) << "編號" << setw(10) << "飲料名稱" << setw(10) << "大小" << "售價" << endl;
-	cout << "---------------------------------" << endl;
+	cout << setw(4) << "編號" << setw(10) << "飲料名稱" << setw(10) << "大小" <<setw(10)<< "售價" << endl;
+	cout << "---------------------------------------" << endl;
 	
 	int i = 1;
 	for (Drinkitem item : drinks) {
-		cout << setw(4) << i<<endl;
+		cout << setw(4) << i;//setw()空白
+		item.displayitem();
 		i++;
 	}
+	cout << "--------------------------------------" << endl;
 }
 
 int main(){
