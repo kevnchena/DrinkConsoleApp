@@ -1,4 +1,6 @@
 #include "Drinkitem.h"
+#include<iostream>
+using namespace std;
 
 Drinkitem::Drinkitem(const string& a, const string& b, int c)
 {

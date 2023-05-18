@@ -3,7 +3,7 @@
 #include<array>
 #include<iomanip>
 #include"Drinkitem.h"
-#include "DrinkConsoleApp.h"
+#include "Orderitem.h"
 using namespace std;
 
 void AddNewDrinks(vector<Drinkitem>& drinks)
@@ -23,24 +23,44 @@ void DisplayDrinkMenu(vector<Drinkitem>& drinks) {
 	cout << "---------------------------------------" << endl;
 	
 	int i = 1;
-	for (Drinkitem item : drinks) {
-		cout << setw(4) << i;//setw()空白
-		item.displayitem();
+	//for (Drinkitem item : drinks) {
+	//	cout << setw(4) << i;//setw()空白
+	//	item.displayitem();
+	//	i++;
+	//}
+
+	vector<Drinkitem>::iterator v = drinks.begin();//迭代器
+	while (v != drinks.end()) {
+		cout << setw(4) << i;
+		v->displayitem();
+		v++;
 		i++;
 	}
 	cout << "--------------------------------------" << endl;
 }
 
+void OrderDrink(vector<Orderitem>&item) {
+
+}
+
 int main(){
 	
 	vector<Drinkitem> drinks;
+	vector<Orderitem> order;
+
 	//array<int, 5> a = { 1,2,3,4,5 };
 	//array<array<int, 5>, 3>b = { 1,2,3,4,5,6};二維陣列
 	//Drinkitem drink1("紅茶", "大杯", 40); 
 	//drinks.push_back(drink1);
-	AddNewDrinks(drinks);
-	DisplayDrinkMenu(drinks);
 	
+	//新增飲料品項
+	AddNewDrinks(drinks);
+	//顯示飲料品項
+	DisplayDrinkMenu(drinks);
+	//點餐
+	OrderDrink(order);
+
+
 	return 0;
 }
 
