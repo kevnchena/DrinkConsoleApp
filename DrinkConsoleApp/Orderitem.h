@@ -3,8 +3,9 @@
 class Orderitem
 {
 private:
-	int itemIdex;
+	int itemindex;
 	int quantity;
-
+public:
+	 int Count();
 };
 
