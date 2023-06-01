@@ -66,13 +66,51 @@ void OrderDrink(vector<Orderitem>& order, vector<Drinkitem>& drinks) {
 
 }
 
-void CalculateSalePrice(vector<Orderitem>&order,vector<Drinkitem>& drinks) {
+void CalculateSalePrice(vector<Orderitem>& order, vector<Drinkitem>& drinks) {
 	int takein = 1;
 	cout << "請問是內用還是外帶?(1.內用 2.外帶)";
 	cin >> takein;
 	string messagetakein = (takein == 1) ? "內用" : "外帶";
-}
 
+	int totalPrice = 0;
+	int salePrice = 0;
+	string messagePrice = "";
+	cout << "--------------------------------------" << endl;
+	cout << "您所點的飲料如下: " << endl;
+	cout << "--------------------------------------" << endl;
+	for (Orderitem orderitem : order) {
+		orderitem.displayOrderitem(drinks);
+		Drinkitem drinkitem = drinks[orderitem.getindex() - 1];
+		totalPrice += drinkitem.getPrice() * orderitem.getquantity();
+
+	}
+
+	if (totalPrice >= 500) {
+		salePrice = totalPrice * 0.8;
+		messagePrice = "訂購500元以上者8折";
+
+	}
+	else if (totalPrice >= 300) {
+		salePrice = totalPrice * 0.9;
+		messagePrice = "訂購500元以上者9折";
+	}
+	else if (totalPrice >= 200) {
+		salePrice = totalPrice * 0.95;
+		messagePrice = "訂購200元以上者95折";
+	}
+	else {
+		salePrice = totalPrice;
+		messagePrice = "訂購未滿200元不打折";
+	}
+
+	cout << "------------------------------" << endl;
+	cout << "您所點的飲料如下: " << endl;
+	cout << "------------------------------" << endl;
+
+
+
+
+}
 int main(){
 	
 	vector<Drinkitem> drinks;
