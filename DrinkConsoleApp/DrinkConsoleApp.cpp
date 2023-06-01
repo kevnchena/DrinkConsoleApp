@@ -38,8 +38,39 @@ void DisplayDrinkMenu(vector<Drinkitem>& drinks) {
 	cout << "--------------------------------------" << endl;
 }
 
-void OrderDrink(vector<Orderitem>&item) {
+void OrderDrink(vector<Orderitem>& order, vector<Drinkitem>& drinks) {
+	int index;
+	int qty;
+	char ans = 'Y';
 
+	do {
+		cout << "請輸入要訂購的飲料標號:  ";
+		cin >> index;
+		cout << "請輸入要訂購的飲料數量:  ";
+		cin >> qty;
+		if (index<1 || index>drinks.size()) {
+			cout << "編號錯誤,請重新輸入:" << endl;
+		}
+		else if(qty<1){
+			cout << "數量錯誤,請重新輸入:" << endl;
+		}
+		else {
+			Orderitem orderitem(index,qty);
+			order.push_back(orderitem);
+			orderitem.displayOrderitem(drinks);
+			cout << "是否繼續點餐?(Y或y繼續點餐)";
+			cin >> ans;
+
+		}
+	} while (ans == 'Y' || ans == 'y');
+
+}
+
+void CalculateSalePrice(vector<Orderitem>&order,vector<Drinkitem>& drinks) {
+	int takein = 1;
+	cout << "請問是內用還是外帶?(1.內用 2.外帶)";
+	cin >> takein;
+	string messagetakein = (takein == 1) ? "內用" : "外帶";
 }
 
 int main(){
@@ -57,9 +88,9 @@ int main(){
 	//顯示飲料品項
 	DisplayDrinkMenu(drinks);
 	//點餐
-	OrderDrink(order);
-
-
+	OrderDrink(order, drinks);
+	//計算總金額與售價
+	CalculateSalePrice(order,drinks);
 	return 0;
 }
 

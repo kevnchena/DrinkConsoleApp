@@ -13,3 +13,18 @@ void Drinkitem::displayitem()
 {
 	cout << setw(10) << Name << setw(10) << Size << setw(10) << Price << endl;
 }
+
+string Drinkitem::getName()
+{
+	return Name;
+}
+
+string Drinkitem::getSize()
+{
+	return Size;
+}
+
+int Drinkitem::getPrice()
+{
+	return Price;
+}

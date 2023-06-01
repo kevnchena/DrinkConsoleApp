@@ -1,8 +1,16 @@
 #include "Orderitem.h"
 #include<iostream>
 using namespace std;
-int Orderitem::Count()
+
+
+Orderitem::Orderitem(int index, int qty) : itemindex{ index }, quantity{qty}
 {
-    
-    return 0;
+
+
+}
+
+void Orderitem::displayOrderitem(vector<Drinkitem>& drinks)
+{
+	Drinkitem drinkitem = drinks[itemindex - 1];
+	cout << "您所點的飲料為 : " << drinkitem.getName() << " " << drinkitem.getSize() << " " << quantity << "杯,每杯" << drinkitem.getPrice() << endl;
 }

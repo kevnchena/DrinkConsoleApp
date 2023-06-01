@@ -13,5 +13,8 @@ private:
 public:
 	Drinkitem(const string&,const string&, int);
 	void displayitem();
+	string getName();
+	string getSize();
+	int getPrice();
 };
 

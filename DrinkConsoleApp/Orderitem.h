@@ -1,4 +1,6 @@
 #pragma once
+#include"Drinkitem.h"
+#include<vector>
 
 class Orderitem
 {
@@ -6,6 +8,8 @@ private:
 	int itemindex;
 	int quantity;
 public:
-	 int Count();
+	Orderitem(int, int);
+	void displayOrderitem(vector<Drinkitem>& drinks);
+	
 };
 
