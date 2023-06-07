@@ -18,6 +18,7 @@ void AddNewDrinks(vector<Drinkitem>& drinks)
 }
 
 void DisplayDrinkMenu(vector<Drinkitem>& drinks) {
+
 	cout << setw(4) << "編號" << setw(10) << "飲料名稱" << setw(10) << "大小" <<setw(10)<< "售價" << endl;
 	cout << "--------------------------------------" << endl;
 	
@@ -92,7 +93,7 @@ void CalculateSalePrice(vector<Orderitem>& order, vector<Drinkitem>& drinks) {
 	}
 	else if (totalPrice >= 300) {
 		salePrice = totalPrice * 0.9;
-		messagePrice = "訂購500元以上者9折";
+		messagePrice = "訂購300元以上者9折";
 	}
 	else if (totalPrice >= 200) {
 		salePrice = totalPrice * 0.95;
@@ -104,11 +105,11 @@ void CalculateSalePrice(vector<Orderitem>& order, vector<Drinkitem>& drinks) {
 	}
 
 	cout << "------------------------------" << endl;
-	cout << "您所點的飲料如下: " << endl;
+	cout << "訂購方式: " << messagetakein<< endl;
+	cout << "總金額: " << totalPrice << endl;
+	cout << messagePrice << endl;
+	cout << "售價: " << salePrice << endl;
 	cout << "------------------------------" << endl;
-
-
-
 
 }
 int main(){
