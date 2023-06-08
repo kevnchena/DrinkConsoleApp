@@ -23,14 +23,49 @@ int main(){
 
 void AddNewDrinks(vector<Drinkitem>& drinks)
 {
-	drinks.push_back(Drinkitem("紅茶", "大杯", 60));
+	/*drinks.push_back(Drinkitem("紅茶", "大杯", 60));
 	drinks.push_back(Drinkitem("紅茶", "小杯", 40));
 	drinks.push_back(Drinkitem("綠茶", "大杯", 60));
 	drinks.push_back(Drinkitem("紅茶", "小杯", 40));
 	drinks.push_back(Drinkitem("咖啡", "大杯", 70));
 	drinks.push_back(Drinkitem("咖啡", "小杯", 50));
 	drinks.push_back(Drinkitem("可樂", "大杯", 50));
-	drinks.push_back(Drinkitem("可樂", "小杯", 25));
+	drinks.push_back(Drinkitem("可樂", "小杯", 25));*/
+	string filename("drinks.csv");
+	string file_content = ReadFile(filename);
+	
+	vector<string> lines = Split(file_content,'\n');
+	for (string line : lines) {
+		vector<string>fields = Split(line, ',');
+		if (fields.size() == 3) {
+			string name = fields[0];
+			string size = fields[1];
+			int price = stoi(fields[2]);
+			drinks.push_back(Drinkitem(name, size, price));
+		}
+	}
+	
+}
+string ReadFile(const string& filename) {
+	auto string_content = ostringstream();
+	ifstream input_file(filename);
+	if (!input_file.is_open()) {
+		cout << "無法讀取檔案: " << filename << endl;
+		return "";
+	}
+	string_content << input_file.rdbuf();//raw device
+	input_file.close();
+	return string_content.str();
+}
+
+vector<string> Split(const string& string_content, char del) {
+	vector<string> tokens;
+	string token;
+	istringstream tokenStream(string_content);
+	while (getline(tokenStream, token, del)) {
+		tokens.push_back(token);
+	}
+	return tokens;
 }
 
 void DisplayDrinkMenu(vector<Drinkitem>& drinks) {
