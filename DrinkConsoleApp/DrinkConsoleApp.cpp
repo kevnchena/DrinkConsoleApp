@@ -137,7 +137,8 @@ void PrintOrder(vector<Orderitem>& order , vector<Drinkitem> drinks, string mess
 {
 	//cout << "列印" << endl;
 	string filename{ "order.txt" };
-	ofstream output_file( filename);
+	ofstream output_file;
+	output_file.open(filename, ios::app);
 	if (!output_file.is_open()) {
 		cout << "無法寫入檔案" << endl;
 		return;
