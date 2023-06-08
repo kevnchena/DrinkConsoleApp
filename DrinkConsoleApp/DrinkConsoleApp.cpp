@@ -1,9 +1,25 @@
-﻿#include<iostream>
-#include<vector>
-#include<iomanip>
-#include"Drinkitem.h"
-#include "Orderitem.h"
-using namespace std;
+﻿#include"DrinkConsoleApp.h"
+
+int main(){
+	
+	vector<Drinkitem> drinks;
+	vector<Orderitem> order;
+
+	//array<int, 5> a = { 1,2,3,4,5 };
+	//array<array<int, 5>, 3>b = { 1,2,3,4,5,6};二維陣列
+	//Drinkitem drink1("紅茶", "大杯", 40); 
+	//drinks.push_back(drink1);
+	
+	//新增飲料品項
+	AddNewDrinks(drinks);
+	//顯示飲料品項
+	DisplayDrinkMenu(drinks);
+	//點餐
+	OrderDrink(order, drinks);
+	//計算總金額與售價
+	CalculateSalePrice(order,drinks);
+	return 0;
+}
 
 void AddNewDrinks(vector<Drinkitem>& drinks)
 {
@@ -76,9 +92,11 @@ void CalculateSalePrice(vector<Orderitem>& order, vector<Drinkitem>& drinks) {
 	int totalPrice = 0;
 	int salePrice = 0;
 	string messagePrice = "";
+
 	cout << "--------------------------------------" << endl;
 	cout << "您所點的飲料如下: " << endl;
 	cout << "--------------------------------------" << endl;
+
 	for (Orderitem orderitem : order) {
 		orderitem.displayOrderitem(drinks);
 		Drinkitem drinkitem = drinks[orderitem.getindex() - 1];
@@ -111,25 +129,32 @@ void CalculateSalePrice(vector<Orderitem>& order, vector<Drinkitem>& drinks) {
 	cout << "售價: " << salePrice << endl;
 	cout << "------------------------------" << endl;
 
-}
-int main(){
-	
-	vector<Drinkitem> drinks;
-	vector<Orderitem> order;
-
-	//array<int, 5> a = { 1,2,3,4,5 };
-	//array<array<int, 5>, 3>b = { 1,2,3,4,5,6};二維陣列
-	//Drinkitem drink1("紅茶", "大杯", 40); 
-	//drinks.push_back(drink1);
-	
-	//新增飲料品項
-	AddNewDrinks(drinks);
-	//顯示飲料品項
-	DisplayDrinkMenu(drinks);
-	//點餐
-	OrderDrink(order, drinks);
-	//計算總金額與售價
-	CalculateSalePrice(order,drinks);
-	return 0;
+	//列印訂單
+	PrintOrder(order, drinks, messagetakein, messagePrice, totalPrice, salePrice);
 }
 
+void PrintOrder(vector<Orderitem>& order , vector<Drinkitem> drinks, string messagetakein, string totalPrice, int messagePrice, int salePrice)
+{
+	//cout << "列印" << endl;
+	string filename{ "order.txt" };
+	ofstream output_file( filename);
+	if (!output_file.is_open()) {
+		cout << "無法寫入檔案" << endl;
+		return;
+	}
+	output_file << "--------------------------------------" << endl;
+	output_file << "您所點的飲料如下: " << endl;
+	output_file << "--------------------------------------" << endl;
+
+	for (Orderitem orderitem : order) {
+			orderitem.printOrderItem(output_file,drinks);
+	}
+	output_file << "------------------------------" << endl;
+	output_file << "訂購方式: " << messagetakein << endl;
+	output_file << "總金額: " << totalPrice << endl;
+	output_file << messagePrice << endl;
+	output_file << "售價: " << salePrice << endl;
+	output_file << "------------------------------" << endl;
+
+	output_file.close();
+}

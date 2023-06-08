@@ -132,6 +132,7 @@
     <ClCompile Include="Orderitem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrinkConsoleApp.h" />
     <ClInclude Include="Drinkitem.h" />
     <ClInclude Include="Orderitem.h" />
   </ItemGroup>

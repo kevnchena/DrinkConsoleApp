@@ -1,6 +1,7 @@
 #pragma once
 #include"Drinkitem.h"
 #include<vector>
+#include<fstream>
 
 class Orderitem
 {
@@ -14,5 +15,6 @@ public:
 	void displayOrderitem(vector<Drinkitem>& drinks);
 	int getindex();
 	int getquantity();
+	void printOrderItem(ofstream & , vector<Drinkitem>&);
 };
 

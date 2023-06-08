@@ -32,5 +32,8 @@
     <ClInclude Include="Orderitem.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="DrinkConsoleApp.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

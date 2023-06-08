@@ -16,5 +16,6 @@ public:
 	string getName();
 	string getSize();
 	int getPrice();
+
 };
 

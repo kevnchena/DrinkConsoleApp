@@ -28,3 +28,4 @@ int Drinkitem::getPrice()
 {
 	return Price;
 }
+

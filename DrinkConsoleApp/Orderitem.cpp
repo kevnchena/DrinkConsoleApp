@@ -25,3 +25,11 @@ int Orderitem::getquantity()
 {
 	return quantity;
 }
+
+void Orderitem::printOrderItem(ofstream & output_file, vector<Drinkitem>& drinks)
+{
+
+	Drinkitem drinkitem = drinks[itemindex - 1];
+	output_file << "您所點的飲料為 : " << drinkitem.getName() << " " << drinkitem.getSize() << " " << quantity
+		<< "杯,每杯" << drinkitem.getPrice() << "元,小記" << drinkitem.getPrice() * quantity << endl;
+}
