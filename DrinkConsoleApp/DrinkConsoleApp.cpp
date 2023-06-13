@@ -46,6 +46,7 @@ void AddNewDrinks(vector<Drinkitem>& drinks)
 	}
 	
 }
+
 string ReadFile(const string& filename) {
 	auto string_content = ostringstream();
 	ifstream input_file(filename);
